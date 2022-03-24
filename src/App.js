@@ -5,40 +5,9 @@ import cards from "./data.json";
 function App() {
   console.log(cards);
   return (
-    <div className='bg-[#0d1323] h-screen px-4 py-14 md:flex md:flex-row md:gap-3 md:items-center md:justify-center'>
+    <div className='bg-[#0d1323]  md:h-screen px-4 py-14 md:flex md:flex-row md:gap-3 md:items-center md:justify-center'>
       <UserInfo />
-      <div className='md:grid md:grid-cols-3 '>
-        {cards.map(cards => {
-          return (
-            <div
-              className={`relative  z-0 my-6 ${cards.bgColor} font-rubik rounded-xl font-thin pt-10 overflow-hidden md:m-3`}
-            >
-              <div className='-z-10 absolute right-5 bottom-28 md:bottom-[9.5rem]'>
-                <img className='opacity-60' src={cards.cardImg} alt='' />
-              </div>
-              <div>
-                <div className='z-10 bg-[#232857] rounded-xl justify-between p-8'>
-                  <div className='text-white flex justify-between'>
-                    <div className='font-normal'>{cards.title}</div>
-                    <div className='text-2xl text-[#bdc1ff]'>
-                      &bull;&bull;&bull;
-                    </div>
-                  </div>
-                  <div className=' flex justify-between md:flex-col'>
-                    <div className='text-3xl text-white'>
-                      {cards.timeframes.weekly.current}hrs
-                    </div>
-                    <div className='pt-2 text-lg text-[#bdc1ff]'>
-                      Last week - {cards.timeframes.weekly.previous}hrs
-                    </div>
-                  </div>
-                </div>
-                <div></div>
-              </div>
-            </div>
-          );
-        })}
-      </div>
+      <Cards />
     </div>
   );
 }
@@ -70,6 +39,43 @@ function UserInfo() {
         <h1 className='text-white'>Weekly</h1>
         <h1>Monthly</h1>
       </div>
+    </div>
+  );
+}
+
+function Cards() {
+  return (
+    <div className='md:grid md:grid-cols-3'>
+      {cards.map(cards => {
+        return (
+          <div
+            className={`relative  z-0 my-6 ${cards.bgColor} font-rubik rounded-xl font-thin pt-10 overflow-hidden md:m-3`}
+          >
+            <div className='-z-10 absolute right-5 bottom-28 md:bottom-[9.5rem]'>
+              <img className='opacity-60' src={cards.cardImg} alt='' />
+            </div>
+            <div>
+              <div className='z-10 bg-[#232857] rounded-xl justify-between p-8'>
+                <div className='text-white flex justify-between'>
+                  <div className='font-normal'>{cards.title}</div>
+                  <div className='text-2xl text-[#bdc1ff]'>
+                    &bull;&bull;&bull;
+                  </div>
+                </div>
+                <div className=' flex justify-between md:flex-col'>
+                  <div className='text-3xl text-white'>
+                    {cards.timeframes.weekly.current}hrs
+                  </div>
+                  <div className='pt-2 text-lg text-[#bdc1ff]'>
+                    Last week - {cards.timeframes.weekly.previous}hrs
+                  </div>
+                </div>
+              </div>
+              <div></div>
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 }
